@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">AndroidPhoto</string>
+
+    <string name="title_search_photos">Search</string>
+    <string name="title_favorite_photos">Favorite</string>
+    <string name="title_curated_photos">Curated</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

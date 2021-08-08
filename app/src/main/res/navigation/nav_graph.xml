@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@+id/navigation_search_photos"
+    >
+
+    <fragment
+        android:id="@+id/navigation_search_photos"
+        android:name="com.bae.photoproject.view.fragments.SearchPhotosFragment"
+        android:label="fragment_search_photos"
+        tools:layout="@layout/fragment_search_photos">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_favorite_photos"
+        android:name="com.bae.photoproject.view.fragments.FavoritePhotosFragment"
+        android:label="fragment_favorite_photos"
+        tools:layout="@layout/fragment_favorite_photos" >
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_curated_photos"
+        android:name="com.bae.photoproject.view.fragments.CuratedPhotosFragment"
+        android:label="fragment_curated_photos"
+        tools:layout="@layout/fragment_curated_photos">
+
+    </fragment>
+</navigation>
