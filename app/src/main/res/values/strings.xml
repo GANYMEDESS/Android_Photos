@@ -6,4 +6,5 @@
     <string name="title_curated_photos">Curated</string>
 
     <string name="hint_search_text">Search Photos</string>
+    <string name="please_wait">Please Wait&#8230;</string>
 </resources>

@@ -15,7 +15,7 @@ class PexelsApiService
         .build()
         .create(PhotoSearchAPI::class.java)
 
-    fun getSearchPhotos(): Single<Pexels.PhotoInfo> {
-        return api.getSearchPhotos(Constants.API_AUTHORIZATION_VALUE)
+    fun getSearchPhotos(searchValue: String): Single<Pexels.Information> {
+        return api.getSearchPhotos(Constants.API_AUTHORIZATION_VALUE, searchValue)
     }
 }
