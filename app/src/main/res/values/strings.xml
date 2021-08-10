@@ -7,4 +7,12 @@
 
     <string name="hint_search_text">Search Photos</string>
     <string name="please_wait">Please Wait&#8230;</string>
+
+    <string name="lbl_search_photo">Search Photo</string>
+    <string name="lbl_favorite_photo">Favorite Photo</string>
+    <string name="lbl_curated_photo">Curated Photo</string>
+
+    <string name="lbl_not_yet_searched">Search for photos you like ^_^</string>
+    <string name="image_contentDescription">image</string>
+    <string name="tv_photo_title">Photo Name</string>
 </resources>

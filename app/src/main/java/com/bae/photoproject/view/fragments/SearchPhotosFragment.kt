@@ -6,18 +6,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import com.bae.photoproject.R
 import com.bae.photoproject.databinding.FragmentSearchPhotosBinding
 import com.bae.photoproject.utils.JSLog
+import com.bae.photoproject.view.adapters.SearchPhotoAdapter
 import com.bae.photoproject.viewmodel.SearchPhotosViewModel
 
 class SearchPhotosFragment : Fragment()
 {
     private var mBinding: FragmentSearchPhotosBinding? = null
-    private lateinit var mSearchPhotoViewModel: SearchPhotosViewModel
     private var mProgressDialog: Dialog? = null
+    private lateinit var mSearchPhotoViewModel: SearchPhotosViewModel
+    private lateinit var mSearchPhotoAdapter: SearchPhotoAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,26 +34,37 @@ class SearchPhotosFragment : Fragment()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mSearchPhotoViewModel = ViewModelProvider(this).get(SearchPhotosViewModel::class.java)
-
         searchViewModelObserver()
 
-        mBinding?.svPhotos?.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
-            android.widget.SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                query?.let {
-                    JSLog.i("TextSubmit Search -> $it")
-                    mSearchPhotoViewModel.getSearchPhotoFromAPI(it)
+        mBinding?.run {
+            // RecyclerView
+            rvSearchPhotosList.layoutManager = GridLayoutManager(requireActivity(), 2)
+            mSearchPhotoAdapter = SearchPhotoAdapter(this@SearchPhotosFragment)
+            rvSearchPhotosList.adapter = mSearchPhotoAdapter
+
+            tvNotYetSearched.visibility = View.VISIBLE
+            rvSearchPhotosList.visibility = View.GONE
+
+            // SearchView
+            svPhotos.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+                android.widget.SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    query?.let {
+                        JSLog.i("TextSubmit Search -> $it")
+                        mSearchPhotoViewModel.getSearchPhotoFromAPI(it)
+                    }
+
+                    svPhotos.clearFocus()
+                    return true
                 }
 
-                return true
-            }
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    JSLog.i("onQueryTextChange $newText")
 
-            override fun onQueryTextChange(newText: String?): Boolean {
-                JSLog.i("onQueryTextChange $newText")
-
-                return true
-            }
-        })
+                    return true
+                }
+            })
+        }
     }
 
     private fun showCustomProgressDialog() {
@@ -69,6 +84,9 @@ class SearchPhotosFragment : Fragment()
             { response ->
                 response?.let {
                     JSLog.i("Search Response ${response.photos}")
+                    mBinding?.tvNotYetSearched?.visibility = View.GONE
+                    mBinding?.rvSearchPhotosList?.visibility = View.VISIBLE
+                    mSearchPhotoAdapter.photosList(response.photos)
                 }
             }
         )

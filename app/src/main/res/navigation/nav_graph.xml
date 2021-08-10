@@ -10,7 +10,7 @@
     <fragment
         android:id="@+id/navigation_search_photos"
         android:name="com.bae.photoproject.view.fragments.SearchPhotosFragment"
-        android:label="fragment_search_photos"
+        android:label="@string/lbl_search_photo"
         tools:layout="@layout/fragment_search_photos">
 
     </fragment>
@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/navigation_favorite_photos"
         android:name="com.bae.photoproject.view.fragments.FavoritePhotosFragment"
-        android:label="fragment_favorite_photos"
+        android:label="@string/lbl_favorite_photo"
         tools:layout="@layout/fragment_favorite_photos" >
 
     </fragment>
@@ -26,7 +26,7 @@
     <fragment
         android:id="@+id/navigation_curated_photos"
         android:name="com.bae.photoproject.view.fragments.CuratedPhotosFragment"
-        android:label="fragment_curated_photos"
+        android:label="@string/lbl_curated_photo"
         tools:layout="@layout/fragment_curated_photos">
 
     </fragment>
