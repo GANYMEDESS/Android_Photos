@@ -6,13 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bae.photoproject.R
 import com.bae.photoproject.databinding.FragmentSearchPhotosBinding
 import com.bae.photoproject.utils.JSLog
+import com.bae.photoproject.view.activities.MainActivity
 import com.bae.photoproject.view.adapters.SearchPhotoAdapter
 import com.bae.photoproject.viewmodel.SearchPhotosViewModel
 
@@ -112,6 +113,23 @@ class SearchPhotosFragment : Fragment()
                 }
             }
         )
+    }
+
+    fun photoDetails(photo: String) {
+        findNavController().navigate(SearchPhotosFragmentDirections.actionNavigationSearchPhotosToPhotoDetailFragment(
+            photo
+        ))
+
+        if(requireActivity() is MainActivity) {
+            (activity as MainActivity?)!!.hideBottomNavigationView()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if(requireActivity() is MainActivity){
+            (activity as MainActivity?)!!.showBottomNavigationView()
+        }
     }
 
     override fun onDestroy() {

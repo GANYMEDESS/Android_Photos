@@ -1,11 +1,13 @@
 package com.bae.photoproject.view.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.bae.photoproject.databinding.ItemPhotoLayoutBinding
 import com.bae.photoproject.model.entities.Pexels
+import com.bae.photoproject.view.fragments.SearchPhotosFragment
 import com.bumptech.glide.Glide
 
 class SearchPhotoAdapter(private val fragment: Fragment): RecyclerView.Adapter<SearchPhotoAdapter.ViewHolder>()
@@ -32,12 +34,19 @@ class SearchPhotoAdapter(private val fragment: Fragment): RecyclerView.Adapter<S
             .into(holder.ivPhotoImage)
 
         holder.tvTitle.text = photo.photographer
+
+        holder.itemView.setOnClickListener {
+            if(fragment is SearchPhotosFragment) {
+                fragment.photoDetails(photo.src.original)
+            }
+        }
     }
 
     override fun getItemCount(): Int {
         return photos.size
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun photosList(list: List<Pexels.Photos>) {
         photos = list
         notifyDataSetChanged()

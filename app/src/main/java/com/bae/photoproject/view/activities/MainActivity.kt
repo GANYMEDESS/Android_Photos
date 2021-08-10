@@ -1,6 +1,7 @@
 package com.bae.photoproject.view.activities
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -33,5 +34,17 @@ class MainActivity : AppCompatActivity()
 
     override fun onSupportNavigateUp(): Boolean {
         return NavigationUI.navigateUp(mNavController, null)
+    }
+
+    fun hideBottomNavigationView() {
+        mBinding.navView.clearAnimation()
+        mBinding.navView.animate().translationY(mBinding.navView.height.toFloat()).duration = 300
+        mBinding.navView.visibility = View.GONE
+    }
+
+    fun showBottomNavigationView() {
+        mBinding.navView.clearAnimation()
+        mBinding.navView.animate().translationY(0f).duration = 300
+        mBinding.navView.visibility = View.VISIBLE
     }
 }

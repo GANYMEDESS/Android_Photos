@@ -6,10 +6,12 @@
         <entry key="..\:/Android/GANYMEDES/Android_Photos/app/src/main/res/drawable/bg_white_rounded.xml" value="0.3764102564102564" />
         <entry key="..\:/Android/GANYMEDES/Android_Photos/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3764102564102564" />
         <entry key="..\:/Android/GANYMEDES/Android_Photos/app/src/main/res/drawable/ic_search_photo.xml" value="0.3764102564102564" />
+        <entry key="..\:/Android/GANYMEDES/Android_Photos/app/src/main/res/drawable/ic_wait_photo.xml" value="0.3764102564102564" />
         <entry key="..\:/Android/GANYMEDES/Android_Photos/app/src/main/res/layout/activity_main.xml" value="0.3328804347826087" />
         <entry key="..\:/Android/GANYMEDES/Android_Photos/app/src/main/res/layout/dialog_custom_progress.xml" value="0.3283514492753623" />
         <entry key="..\:/Android/GANYMEDES/Android_Photos/app/src/main/res/layout/fragment_curated_photos.xml" value="0.2046875" />
         <entry key="..\:/Android/GANYMEDES/Android_Photos/app/src/main/res/layout/fragment_favorite_photos.xml" value="0.2046875" />
+        <entry key="..\:/Android/GANYMEDES/Android_Photos/app/src/main/res/layout/fragment_photo_detail.xml" value="0.32382246376811596" />
         <entry key="..\:/Android/GANYMEDES/Android_Photos/app/src/main/res/layout/fragment_search_photos.xml" value="0.33" />
         <entry key="..\:/Android/GANYMEDES/Android_Photos/app/src/main/res/layout/item_photo_layout.xml" value="0.22" />
         <entry key="..\:/Android/GANYMEDES/Android_Photos/app/src/main/res/menu/bottom_nav_menu.xml" value="0.36614583333333334" />

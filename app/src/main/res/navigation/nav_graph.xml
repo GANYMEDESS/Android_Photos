@@ -13,6 +13,21 @@
         android:label="@string/lbl_search_photo"
         tools:layout="@layout/fragment_search_photos">
 
+        <action
+            android:id="@+id/action_navigation_search_photos_to_photoDetailFragment"
+            app:destination="@id/navigation_photo_details"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_photo_details"
+        android:name="com.bae.photoproject.view.fragments.PhotoDetailFragment"
+        android:label="@string/lbl_photo_details"
+        tools:layout="@layout/fragment_photo_detail" >
+        <argument
+            android:name="photoDetails"
+            app:argType="string"
+            />
     </fragment>
 
     <fragment
