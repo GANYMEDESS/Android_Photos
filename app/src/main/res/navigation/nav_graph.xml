@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@+id/navigation_search_photos"
+    >
+
+    <fragment
+        android:id="@+id/navigation_search_photos"
+        android:name="com.bae.photoproject.view.fragments.SearchPhotosFragment"
+        android:label="@string/lbl_search_photo"
+        tools:layout="@layout/fragment_search_photos">
+
+        <action
+            android:id="@+id/action_navigation_search_photos_to_photoDetailFragment"
+            app:destination="@id/navigation_photo_details"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_photo_details"
+        android:name="com.bae.photoproject.view.fragments.PhotoDetailFragment"
+        android:label="@string/lbl_photo_details"
+        tools:layout="@layout/fragment_photo_detail" >
+        <argument
+            android:name="photoDetails"
+            app:argType="string"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_favorite_photos"
+        android:name="com.bae.photoproject.view.fragments.FavoritePhotosFragment"
+        android:label="@string/lbl_favorite_photo"
+        tools:layout="@layout/fragment_favorite_photos" >
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_curated_photos"
+        android:name="com.bae.photoproject.view.fragments.CuratedPhotosFragment"
+        android:label="@string/lbl_curated_photo"
+        tools:layout="@layout/fragment_curated_photos">
+
+    </fragment>
+</navigation>
