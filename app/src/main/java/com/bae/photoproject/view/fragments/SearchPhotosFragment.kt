@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bae.photoproject.R
 import com.bae.photoproject.databinding.FragmentSearchPhotosBinding
+import com.bae.photoproject.model.entities.Pexels
 import com.bae.photoproject.utils.JSLog
 import com.bae.photoproject.view.activities.MainActivity
 import com.bae.photoproject.view.adapters.SearchPhotoAdapter
@@ -115,7 +116,7 @@ class SearchPhotosFragment : Fragment()
         )
     }
 
-    fun photoDetails(photo: String) {
+    fun photoDetails(photo: Pexels.Photos) {
         findNavController().navigate(SearchPhotosFragmentDirections.actionNavigationSearchPhotosToPhotoDetailFragment(
             photo
         ))

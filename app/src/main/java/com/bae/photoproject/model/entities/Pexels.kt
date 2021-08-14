@@ -1,19 +1,20 @@
 package com.bae.photoproject.model.entities
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
 object Pexels
 {
-   data class PhotoInfo(
-       val photos: List<Information>
-   )
-
+    @Parcelize
     data class Information(
         val page: Int,
         val per_page: Int,
         val photos: List<Photos>,
         val total_results: Int,
         val next_page: String,
-    )
+    ): Parcelable
 
+    @Parcelize
     data class Photos(
         val id: Int,
         val width: Int,
@@ -25,8 +26,9 @@ object Pexels
         val avg_color: String,
         val src: Src,
         val liked: Boolean
-    )
+    ): Parcelable
 
+    @Parcelize
     data class Src(
         val original: String,
         val large2x: String,
@@ -36,5 +38,5 @@ object Pexels
         val portrait: String,
         val landscape: String,
         val tiny: String
-    )
+    ): Parcelable
 }
