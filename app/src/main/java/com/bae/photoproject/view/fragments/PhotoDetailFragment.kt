@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
@@ -62,6 +63,7 @@ class PhotoDetailFragment : Fragment()
                             dataSource: DataSource?,
                             isFirstResource: Boolean
                         ): Boolean {
+                            ivFavoritePhoto.visibility = View.VISIBLE
                             return false
                         }
 
