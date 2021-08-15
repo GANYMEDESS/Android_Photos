@@ -14,6 +14,7 @@
     <string name="lbl_photo_details">Photo Details</string>
 
     <string name="lbl_not_yet_searched">Search for photos you liked&#128512;</string>
+    <string name="lbl_not_yet_added_favorite">No Favorite Photos added yet!</string>
     <string name="image_contentDescription">image</string>
     <string name="tv_photo_title">Photo Name</string>
 

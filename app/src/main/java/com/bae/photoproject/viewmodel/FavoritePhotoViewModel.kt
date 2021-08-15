@@ -15,6 +15,10 @@ class FavoritePhotoViewModel(private val repository: FavoritePhotoRepository): V
         repository.updateFavoritePhotoInfos(favoritePhoto)
     }
 
+    fun delete(favoritePhoto: FavoritePhoto) = viewModelScope.launch {
+        repository.deleteFavoritePhotoInfos(favoritePhoto)
+    }
+
     val favoritePhotos: LiveData<List<FavoritePhoto>> = repository.favoritePhotos.asLiveData()
 }
 
