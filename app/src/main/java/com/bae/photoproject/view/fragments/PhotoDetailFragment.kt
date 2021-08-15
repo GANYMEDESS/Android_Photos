@@ -5,15 +5,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bae.photoproject.R
+import com.bae.photoproject.application.JSApplication
 import com.bae.photoproject.databinding.FragmentPhotoDetailBinding
+import com.bae.photoproject.model.entities.FavoritePhoto
 import com.bae.photoproject.model.entities.Pexels
 import com.bae.photoproject.utils.JSLog
+import com.bae.photoproject.viewmodel.FavoritePhotoViewModel
+import com.bae.photoproject.viewmodel.FavoritePhotoViewModelFactory
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
@@ -24,6 +30,9 @@ import java.io.IOException
 class PhotoDetailFragment : Fragment()
 {
     private var mBinding: FragmentPhotoDetailBinding? = null
+    private val mFavoritePhotoViewModel: FavoritePhotoViewModel by viewModels{
+        FavoritePhotoViewModelFactory(((requireActivity().application) as JSApplication).repository)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -74,7 +83,6 @@ class PhotoDetailFragment : Fragment()
                                 ivFavoritePhoto.visibility = View.VISIBLE
                                 return false
                             }
-
                         })
                         .into(ivDetailPhoto)
                 }catch(e: IOException){e.printStackTrace()}
@@ -85,6 +93,21 @@ class PhotoDetailFragment : Fragment()
                         requireActivity(),
                         R.drawable.ic_favorite_selected
                     ))
+
+                    val favoritePhotos = FavoritePhoto(
+                        photoInfo.src.tiny,
+                        photoInfo.src.original,
+                        photoInfo.photographer,
+                        true
+                    )
+
+                    mFavoritePhotoViewModel.insert(favoritePhotos)
+
+                    Toast.makeText(
+                        requireActivity(),
+                        resources.getString(R.string.msg_added_to_favorites),
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         }

@@ -9,5 +9,6 @@ data class FavoritePhoto(
     @ColumnInfo val previewPhoto: String,
     @ColumnInfo val originPhoto: String,
     @ColumnInfo val photographer: String,
+    @ColumnInfo var favoritePhoto: Boolean = false,
     @PrimaryKey(autoGenerate = true) val id: Int = 0
 )

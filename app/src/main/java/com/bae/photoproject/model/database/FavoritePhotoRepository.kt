@@ -10,6 +10,10 @@ class FavoritePhotoRepository(private val favoritePhotoDao: FavoritePhotoDao)
     suspend fun insertFavoritePhotoInfos(favoritePhoto: FavoritePhoto){
         favoritePhotoDao.insertFavoritePhotoInfos(favoritePhoto)
     }
+    @WorkerThread
+    suspend fun updateFavoritePhotoInfos(favoritePhoto: FavoritePhoto){
+        favoritePhotoDao.updateFavoritePhotoInfos(favoritePhoto)
+    }
 
     val favoritePhotos: Flow<List<FavoritePhoto>> = favoritePhotoDao.getAllFavoritePhotos()
 }

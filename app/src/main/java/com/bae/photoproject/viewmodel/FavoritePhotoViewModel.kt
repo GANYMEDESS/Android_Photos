@@ -11,6 +11,10 @@ class FavoritePhotoViewModel(private val repository: FavoritePhotoRepository): V
         repository.insertFavoritePhotoInfos(favoritePhoto)
     }
 
+    fun update(favoritePhoto: FavoritePhoto) = viewModelScope.launch {
+        repository.updateFavoritePhotoInfos(favoritePhoto)
+    }
+
     val favoritePhotos: LiveData<List<FavoritePhoto>> = repository.favoritePhotos.asLiveData()
 }
 
