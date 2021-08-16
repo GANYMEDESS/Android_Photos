@@ -19,4 +19,9 @@
     <string name="tv_photo_title">Photo Name</string>
 
     <string name="msg_added_to_favorites">You have added the photo to your favorites.</string>
+
+    <string name="title_delete_photo">Delete Photo</string>
+    <string name="msg_delete_photo_dialog">Are you sure you wants to delete this photo from Favorite?</string>
+    <string name="lbl_yes">Yes</string>
+    <string name="lbl_no">No</string>
 </resources>

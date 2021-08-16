@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
+import com.bae.photoproject.R
 import com.bae.photoproject.application.JSApplication
 import com.bae.photoproject.databinding.FragmentFavoritePhotosBinding
 import com.bae.photoproject.model.entities.FavoritePhoto
@@ -58,6 +60,23 @@ class FavoritePhotosFragment : Fragment()
     }
 
     fun deleteFromFavorite(photo: FavoritePhoto) {
-        mFavoritePhotoViewModel.delete(photo)
+        val builder = AlertDialog.Builder(requireActivity())
+
+        builder.run {
+            setTitle(resources.getString(R.string.title_delete_photo))
+            setMessage(resources.getString(R.string.msg_delete_photo_dialog))
+            setIcon(android.R.drawable.ic_dialog_alert)
+            setPositiveButton(resources.getString(R.string.lbl_yes)){dialogInterface, _ ->
+                mFavoritePhotoViewModel.delete(photo)
+                dialogInterface.dismiss()
+            }
+            setNegativeButton(resources.getString(R.string.lbl_no)){dialogInterface, _ ->
+                dialogInterface.dismiss()
+            }
+        }
+
+        val alertDialog: AlertDialog = builder.create()
+        alertDialog.setCancelable(false)
+        alertDialog.show()
     }
 }
