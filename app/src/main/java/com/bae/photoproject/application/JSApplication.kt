@@ -5,6 +5,8 @@ import android.content.Context
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import com.bae.photoproject.BuildConfig.DEBUG
+import com.bae.photoproject.model.database.FavoritePhotoRepository
+import com.bae.photoproject.model.database.FavoritePhotoRoomDatabase
 
 class JSApplication: Application()
 {
@@ -35,4 +37,7 @@ class JSApplication: Application()
 
         return debuggable
     }
+
+    private val database by lazy { FavoritePhotoRoomDatabase.getDatabase(this@JSApplication) }
+    val repository by lazy { FavoritePhotoRepository(database.favoritePhotoDao()) }
 }

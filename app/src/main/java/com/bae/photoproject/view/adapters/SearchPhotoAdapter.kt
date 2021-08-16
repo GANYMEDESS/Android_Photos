@@ -37,7 +37,7 @@ class SearchPhotoAdapter(private val fragment: Fragment): RecyclerView.Adapter<S
 
         holder.itemView.setOnClickListener {
             if(fragment is SearchPhotosFragment) {
-                fragment.photoDetails(photo.src.original)
+                fragment.photoDetails(photo)
             }
         }
     }

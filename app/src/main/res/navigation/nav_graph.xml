@@ -26,7 +26,7 @@
         tools:layout="@layout/fragment_photo_detail" >
         <argument
             android:name="photoDetails"
-            app:argType="string"
+            app:argType="com.bae.photoproject.model.entities.Pexels$Photos"
             />
     </fragment>
 
